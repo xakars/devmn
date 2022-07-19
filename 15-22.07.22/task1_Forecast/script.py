@@ -1,5 +1,6 @@
 import requests
 
+
 cities = ['Лондон', 'Шереметьево', 'Череповец']
 url_template = 'https://wttr.in/{}'
 payload = {
@@ -7,7 +8,8 @@ payload = {
     'lang': 'ru'
 }
 
-for city_name, city in enumerate(cities):
-    response = requests.get(url_template.format(cities[city_name]), params=payload)
+
+for city in cities:
+    response = requests.get(url_template.format(city), params=payload)
     response.raise_for_status()
     print(response.text)
