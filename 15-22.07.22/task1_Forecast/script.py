@@ -8,7 +8,6 @@ payload = {
     'lang': 'ru'
 }
 
-
 for city in cities:
     response = requests.get(url_template.format(city), params=payload)
     response.raise_for_status()
