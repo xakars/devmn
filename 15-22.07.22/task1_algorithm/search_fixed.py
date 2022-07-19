@@ -1,7 +1,7 @@
 from random import sample
 
 
-def get_number_from_user():
+def get_number_from_user() -> int:
     while True:
         try:
             user_number = int(input("\nPick a number between 0-100: "))
@@ -14,17 +14,19 @@ def get_number_from_user():
     return user_number
 
 
-def get_random_int_list():
+def get_random_int_list() -> list:
     list_len = 10
     rand_list = sorted(sample(range(0, 101, 2), list_len))
     return rand_list
 
-def binary_search(list, item):
+
+def binary_search(input_list: list, item: int) -> int | None:
+    """Binary Search is a searching algorithm used in a sorted list"""
     low = 0
-    high = len(list)-1
+    high = len(input_list) - 1
     while low <= high:
         mid = (low+high)//2
-        guess = list[mid]
+        guess = input_list[mid]
         if guess == item:
             return mid
         if guess > item:
@@ -32,6 +34,7 @@ def binary_search(list, item):
         else:
             low = mid + 1
     return None
+
 
 if __name__ == '__main__':
     user_input = get_number_from_user()
