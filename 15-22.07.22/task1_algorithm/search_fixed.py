@@ -2,6 +2,7 @@ from random import sample
 
 
 def get_number_from_user() -> int:
+    """Get user input"""
     while True:
         try:
             user_number = int(input("\nPick a number between 0-100: "))
@@ -15,6 +16,7 @@ def get_number_from_user() -> int:
 
 
 def get_random_int_list() -> list:
+    """Generate random list"""
     list_len = 10
     rand_list = sorted(sample(range(0, 101, 2), list_len))
     return rand_list
