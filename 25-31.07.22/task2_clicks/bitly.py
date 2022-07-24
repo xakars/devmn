@@ -4,13 +4,17 @@ from urllib.parse import urlparse
 
 
 token = os.environ['Token']
-header = {"Authorization": f"Bearer {token}"}
+header = {
+    "Authorization": f"Bearer {token}",
+}
 
 
 def shorten_link(token: str, url: str) -> str:
     """Converts a long url to a Bitlink"""
     api_address = 'https://api-ssl.bitly.com/v4/bitlinks'
-    data = {"long_url": f"{url}"}
+    data = {
+        "long_url": f"{url}",
+    }
 
     try:
         response = requests.post(api_address, headers=header, json=data)
@@ -27,9 +31,10 @@ def count_clicks(token: str, link: str) -> int:
     link = parts_bitlink.netloc + parts_bitlink.path
     api_address = f"https://api-ssl.bitly.com/v4/bitlinks/{link}/clicks/summary"
     payload = {
-            "unit": "day",
-            "units": -1
-            }
+        "unit": "day",
+        "units": -1
+    }
+
     try:
         response = requests.get(api_address, params=payload, headers=header)
         response.raise_for_status()
