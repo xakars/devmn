@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 
 def storage_information_view(request):
-    active_visitors = Visit.objects.filter(leaved_at=None)
+    active_visitors = Visit.objects.filter(leaved_at__isnull=True)
     non_closed_visits = []
 
     for visitor in active_visitors:
@@ -15,6 +15,6 @@ def storage_information_view(request):
         })
 
     context = {
-        'non_closed_visits': non_closed_visits,  # не закрытые посещения
+        'non_closed_visits': non_closed_visits,
     }
     return render(request, 'storage_information.html', context)

@@ -31,17 +31,13 @@ class Visit(models.Model):
             )
         )
 
-
-    @classmethod
-    def format_duration(cls, duration):
-        seconds = int(duration.total_seconds())
+    def format_duration(self):
+        seconds = int(self.total_seconds())
         return str(datetime.timedelta(seconds=seconds))
-
 
     def get_duration(self):
         delta = django.utils.timezone.localtime() - self.entered_at
-        return self.format_duration(delta)
-
+        return Visit.format_duration(delta)
 
     def is_visit_long(self, minutes=60):
         if self.leaved_at:
@@ -50,8 +46,3 @@ class Visit(models.Model):
             return seconds > minutes*60
         else:
             return False
-
-
-
-
-
