@@ -32,7 +32,7 @@ class Visit(models.Model):
         )
 
     def format_duration(self):
-        duration = self.get_duration().seconds
+        duration = int(self.get_duration().total_seconds())
         return str(datetime.timedelta(seconds=duration))
 
     def get_duration(self):
@@ -42,5 +42,5 @@ class Visit(models.Model):
         return delta
 
     def is_visit_long(self, minutes=60):
-        return self.get_duration().seconds > minutes*60
+        return self.get_duration().total_seconds() > minutes*60
 
