@@ -14,14 +14,14 @@ export BITLY_TOKEN='Ваш токен'
 ```
 Запустите скрипт командой:
 ```
-python bitly.py
+python main.py {Ссылка которую надо сокрантить || Битлинк}
 ```
 Пример использования:
 ```console
-Введите ссылку: https://climate.mit.edu/
+$ python main.py https://climate.mit.edu/
 Битлинк: https://bit.ly/3z15YY8
 ```
 ```console
-Введите ссылку: https://bit.ly/3z15YY8
+$ python main.py https://bit.ly/3z15YY8
 По вашей ссылке прошли: 3 раз(а)
 ```
